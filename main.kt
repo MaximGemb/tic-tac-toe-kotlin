@@ -4,8 +4,9 @@ import kotlin.math.abs
 
 var turn = 1
 fun main() {
-    val chars: String = "_________"
-    movement(chars.toCharArray())
+    val chars: CharArray = readLine()!!.toCharArray()
+//    val chars: String = "_________"
+    movement(chars)
 }
 
 fun setka(str: CharArray) {
@@ -84,8 +85,8 @@ fun workCase(charArray: CharArray, cell: String) {
 }
 
 fun have1to3(charArray: CharArray, cell: String) {
-    val x1 = if (cell[0].toString().toInt() in 1..3) true else false
-    val x2 = if (cell[2].toString().toInt() in 1..3) true else false
+    val x1 = cell[0].toString().toInt() in 1..3
+    val x2 = cell[2].toString().toInt() in 1..3
     if (!x1 || !x2) {
         println("Coordinates should be from 1 to 3!")
         workCase(charArray, getValue())
@@ -95,9 +96,9 @@ fun have1to3(charArray: CharArray, cell: String) {
 
 fun havePole(charArray: CharArray, cell: String) {
     val pole = arrayOf(
-        "1 1", "1 2", "1 3",
-        "2 1", "2 2", "2 3",
-        "3 1", "3 2", "3 3")
+            "1 1", "1 2", "1 3",
+            "2 1", "2 2", "2 3",
+            "3 1", "3 2", "3 3")
     for (a in 0..pole.size - 1) {
         if (cell == pole[a] && charArray[a] != '_') {
             println("This cell is occupied! Choose another one!")
